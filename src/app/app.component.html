@@ -1,0 +1,49 @@
+<div class="position-relative min-vh-100">
+    <div *ngIf="userId != ''" id="sidebar" class="position-fixed top-0 left-0 bottom-0 primary-bg transition-04">
+        <a href="https://miprueba-2022.web.app/dashboard" class="d-block text-center px-2 py-2 primary-bg-light rounded-0">
+            <em class="text-xxl font-weight-bold">Mi Prueba</em>
+        </a>
+        <ul class="list-unstyled px-2 py-4">
+            <li id="dashboard" class="position-relative mb-3 active">
+                <a class="d-flex align-items-center transition-04" routerLink="/dashboard">
+                    <fa-icon [icon]="faTh" class="text-xl d-flex justify-content-center align-items-center" aria-hidden="true"></fa-icon>
+                    <span class="text-nowrap transition-04">Tareas</span>
+                </a>
+            </li>
+            <li id="status" class="position-relative mb-3 active">
+                <a class="d-flex align-items-center transition-04" routerLink="/status">
+                    <fa-icon [icon]="faExclamation" class="text-xl d-flex justify-content-center align-items-center" aria-hidden="true"></fa-icon>
+                    <span class="text-nowrap transition-04">Estatus</span>
+                </a>
+            </li>
+            <li id="priorities" class="position-relative active">
+                <a class="d-flex align-items-center transition-04" routerLink="/priorities">
+                    <fa-icon [icon]="faArrowsUpDown" class="text-xl d-flex justify-content-center align-items-center" aria-hidden="true"></fa-icon>
+                    <span class="text-nowrap transition-04">Prioridades</span>
+                </a>
+            </li>
+        </ul>
+        <div class="position-absolute left-0 right-0 bottom-0 py-1 primary-bg-light">
+            <div class="px-2 py-1 d-flex justify-content-end align-items-center">
+                <div class="d-flex align-items-center flex-fill transition-04">
+                    <span class="flex-fill px-2">
+                        <span class="d-block text-xs text-nowrap font-weight-bold text-white">{{userName}}</span>
+                    </span>
+                </div>
+                <button type="button" (click)="logout()" class="primary-bg-light border-0">
+                    <fa-icon [icon]="faSignOutAlt" class="text-xl d-flex justify-content-center align-items-center" aria-hidden="true"></fa-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+    <article id="{{sectionId}}" class="ms-auto min-vh-100 bg-lightgray position-relative">
+        <router-outlet></router-outlet>
+    </article>
+    <div *ngIf="alertVisibility" class="alert alert-{{alertType}} alert-dismissible fade show position-fixed top-0 left-0 w-100" role="alert">
+        {{alertMessage}}
+        <button type="button" (click)="alertHide()" class="btn-close"></button>
+    </div>
+    <div *ngIf="loaderVisibility" class="position-fixed top-0 left-0 w-100 h-100 d-flex justify-content-center align-items-center bg-white-75">
+        <span class="spinner-grow mx-auto primary-bg" role="status" aria-hidden="true"></span>
+    </div>
+</div>

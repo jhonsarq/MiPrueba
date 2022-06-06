@@ -1,0 +1,52 @@
+<div class="modal fade" id="prioritiesModal" tabindex="-1" aria-labelledby="priorityModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="priorityModalLabel">Prioridad</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-12 mb-3">
+                        <label for="priorityName" class="form-label">Nombre</label>
+                        <input type="text" [(ngModel)]="priorityName" value="{{priorityName}}" class="form-control" name="priorityName" id="priorityName" />
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="reject-custom-btn rounded-3 d-inline-block text-white border-0 px-5 py-3 shadow-sm transition-03" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" (click)="savePriority()" class="custom-btn rounded-3 d-inline-block text-white border-0 px-5 py-3 shadow-sm transition-03">Guardar cambios</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid py-3">
+    <div class="row justify-content-center">
+        <div class="col-12 mb-5">
+            <h1 class="primary-text border-bottom primary-border mb-5">Prioridades</h1>
+            <button type="button" (click)="setCurrentPriority('', '')" class="custom-btn rounded-3 d-inline-block text-white border-0 px-5 py-3 shadow-sm transition-03">
+                + Agregar prioridad
+            </button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nombre</th>
+                    </tr>
+                </thead>
+                <tbody *ngIf="priorities != null">
+                    <tr *ngFor="let key of objectKeys(priorities)">
+                        <td>{{key}}</td>
+                        <td>
+                            <a class="link text-black" (click)="setCurrentPriority(key, priorities[key])">{{priorities[key]}}</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

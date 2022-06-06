@@ -1,0 +1,52 @@
+<div class="modal fade" id="statusModal" tabindex="-1" aria-labelledby="statusModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="statusModalLabel">Status</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-12 mb-3">
+                        <label for="statusName" class="form-label">Nombre</label>
+                        <input type="text" [(ngModel)]="statusName" value="{{statusName}}" class="form-control" name="statusName" id="statusName" />
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="reject-custom-btn rounded-3 d-inline-block text-white border-0 px-5 py-3 shadow-sm transition-03" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" (click)="saveStatus()" class="custom-btn rounded-3 d-inline-block text-white border-0 px-5 py-3 shadow-sm transition-03">Guardar cambios</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid py-3">
+    <div class="row justify-content-center">
+        <div class="col-12 mb-5">
+            <h1 class="primary-text border-bottom primary-border mb-5">Status</h1>
+            <button type="button" (click)="setCurrentStatus('', '')" class="custom-btn rounded-3 d-inline-block text-white border-0 px-5 py-3 shadow-sm transition-03">
+                + Agregar status
+            </button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nombre</th>
+                    </tr>
+                </thead>
+                <tbody *ngIf="status != null">
+                    <tr *ngFor="let key of objectKeys(status)">
+                        <td>{{key}}</td>
+                        <td>
+                            <a class="link text-black" (click)="setCurrentStatus(key, status[key])">{{status[key]}}</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

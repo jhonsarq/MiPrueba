@@ -1,0 +1,163 @@
+/********************************************************************general styles***************************************************************/
+a {
+    text-decoration: none;
+}
+
+.cdk-overlay-container {
+    z-index:2000 !important;
+}
+/*************************************************************************************************************************************************/
+
+/********************************************************************custom classes***************************************************************/
+.bg-no-repeat {
+    background-repeat: no-repeat;
+}
+
+.bg-center {
+    background-position: center;
+}
+
+.bg-cover {
+    background-size: cover;
+}
+
+.primary-bg {
+    background-color: #533286;
+}
+
+.primary-bg-light {
+    background-color: #5b4086;
+}
+
+.primary-bg-light2 {
+    background-color: #e3e9f6;
+}
+
+.secondary-bg {
+    background-color: #FBC627;
+}
+
+.bg-lightgray {
+    background-color: #F6F6F6;
+}
+
+.bg-black-50 {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.bg-white-75 {
+    background-color: rgba(255, 255, 255, 0.75);
+}
+
+.primary-text {
+    color: #533286;
+}
+
+.secondary-text {
+    color: #FBC627;
+}
+
+.primary-border {
+    border-color: #533286 !important;
+}
+
+.text-xxl {
+    font-size: 25px;
+}
+
+.text-xl {
+    font-size: 20px;
+}
+
+.text-lg {
+    font-size: 18px;
+}
+
+.text-md {
+    font-size: 16px;
+}
+
+.text-sm {
+    font-size: 12px;
+}
+
+.text-xs {
+    font-size: 10px;
+}
+
+.transition-03 {
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.transition-04 {
+    -webkit-transition: all 0.4s ease-in-out;
+    -moz-transition: all 0.4s ease-in-out;
+    -ms-transition: all 0.4s ease-in-out;
+    -o-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+}
+
+.custom-btn {
+    background-color: #533286;
+}
+
+.custom-btn:hover {
+    background-color: #FBC627;
+}
+
+.reject-custom-btn {
+    background-color: #ff0000;
+}
+
+.reject-custom-btn {
+    background-color: #ff4242;
+}
+
+.top-0 {
+    top: 0;
+}
+
+.bottom-0 {
+    bottom: 0;
+}
+
+.left-0 {
+    left: 0;
+}
+
+.right-0 {
+    right: 0;
+}
+
+.left-100 {
+    left: 100%;
+}
+
+.top-50 {
+    top: 50%;
+}
+
+.top-center {
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.zindex-1010 {
+    z-index: 1010;
+}
+
+.zindex-1005 {
+    z-index: 1005;
+}
+
+.link {
+    cursor: pointer;
+}
+/*************************************************************************************************************************************************/

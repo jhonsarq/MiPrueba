@@ -1,0 +1,106 @@
+<div class="modal fade" id="taskModal" tabindex="-1" aria-labelledby="taskModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="taskModalLabel">Tarea</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-12 mb-3">
+                        <label for="taskTitle" class="form-label">Título</label>
+                        <input type="text" [(ngModel)]="taskTitle" value="{{taskTitle}}" class="form-control" name="taskTitle" id="taskTitle" />
+                    </div>
+                    <div class="col-12 mb-3">
+                        <label for="taskDescription" class="form-label">Descripción</label>
+                        <textarea [(ngModel)]="taskDescription" class="form-control" name="taskDescription" id="taskDescription">{{taskDescription}}</textarea>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="startDate" class="form-label">Fecha de inicio</label>
+                        <div class="d-flex">
+                            <input [(ngModel)]="startDate" [matDatepicker]="startDatePicker" value="{{startDate}}" class="form-control date-picker" name="startDate" id="startDate">
+                            <mat-datepicker-toggle [for]="startDatePicker"></mat-datepicker-toggle>
+                            <mat-datepicker #startDatePicker></mat-datepicker>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="endDate" class="form-label">Fecha de finalización</label>
+                        <div class="d-flex">
+                            <input [(ngModel)]="endDate" [matDatepicker]="endDatePicker" value="{{endDate}}" class="form-control date-picker" name="endDate" id="endDate">
+                            <mat-datepicker-toggle [for]="endDatePicker"></mat-datepicker-toggle>
+                            <mat-datepicker #endDatePicker></mat-datepicker>
+                        </div>
+                    </div>
+                    <div *ngIf="fileUrl == ''" [formGroup]="taskForm" class="col-md-6 mb-3">
+                        <label for="file" class="form-label">Archivo</label>
+                        <input id="file" type="file" class="form-control" (change)="onFileChange($event)">
+                    </div>
+                    <div *ngIf="fileUrl != ''" [formGroup]="taskForm" class="col-md-6 mb-3">
+                        <label for="file" class="form-label d-block mb-2">Archivo</label>
+                        <a href="{{fileUrl}}" target="_blank">{{fileUrl}}</a>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="taskStatus" class="form-label">Estatus</label>
+                        <select *ngIf="status != null" [(ngModel)]="taskStatus" name="taskStatus" id="taskStatus" class="form-select" required>
+                            <option *ngFor="let key of objectKeys(status)" value="{{key}}">{{status[key]}}</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="taskPriority" class="form-label">Prioridad</label>
+                        <select *ngIf="priorities != null" [(ngModel)]="taskPriority" name="taskPriority" id="taskPriority" class="form-select" required>
+                            <option *ngFor="let key of objectKeys(priorities)" value="{{key}}">{{priorities[key]}}</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="taskUser" class="form-label">Responsable</label>
+                        <select *ngIf="users != null" [(ngModel)]="taskUser" name="taskUser" id="taskUser" class="form-select" required>
+                            <option *ngFor="let key of objectKeys(users)" value="{{key}}">{{users[key]}}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="reject-custom-btn rounded-3 d-inline-block text-white border-0 px-5 py-3 shadow-sm transition-03" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" (click)="saveTask()" class="custom-btn rounded-3 d-inline-block text-white border-0 px-5 py-3 shadow-sm transition-03">Guardar cambios</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid py-3">
+    <div class="row justify-content-center">
+        <div class="col-12 mb-5">
+            <h1 class="primary-text border-bottom primary-border mb-5">Tareas</h1>
+            <button type="button" (click)="setCurrentTask('',null)" class="custom-btn rounded-3 d-inline-block text-white border-0 px-5 py-3 shadow-sm transition-03">
+                + Agregar tarea
+            </button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Título</th>
+                        <th scope="col">Fecha de finalización</th>
+                        <th scope="col">Estatus</th>
+                        <th scope="col">Prioridad</th>
+                        <th scope="col">Fecha de creación</th>
+                    </tr>
+                </thead>
+                <tbody *ngIf="tasks != null">
+                    <tr *ngFor="let key of objectKeys(tasks)">
+                        <td>{{key}}</td>
+                        <td>
+                            <a class="link text-black" (click)="setCurrentTask(key,tasks[key])">{{tasks[key].title}}</a>
+                        </td>
+                        <td>{{tasks[key].endDate}}</td>
+                        <td>{{tasks[key].status}}</td>
+                        <td>{{tasks[key].priority}}</td>
+                        <td>{{tasks[key].createdDate}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+#sidebar {
+    width: 240px;
+}
+
+#sidebar a, #sidebar button {
+    color: #FFF;
+    border-radius: 12px;
+}
+
+#sidebar ul li a {
+    background-color: transparent;
+}
+
+#sidebar fa-icon {
+    -ms-flex: 0 0 50px;
+    flex: 0 0 50px;
+    width: 50px;
+    height: 50px;
+}
+
+#sidebar ul li.active a {
+    color: #533286;
+    background-color: #FFF;
+}
+
+article {
+    margin-left: auto;
+    width: -webkit-calc(100% - 240px);
+    width: -moz-calc(100% - 240px);
+    width: -ms-calc(100% - 240px);
+    width: -o-calc(100% - 240px);
+    width: calc(100% - 240px);
+}
+
+article#login {
+    width: 100%;
+}
